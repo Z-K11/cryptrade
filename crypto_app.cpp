@@ -1,7 +1,7 @@
 #include<iostream>
 void printmenu();
 int input();
-void processinput(int n);
+bool processinput(int n);
 void printhelp();
 void stats();
 void ask();
@@ -9,12 +9,13 @@ void bid();
 void wallet();
 void gonext();
 int main(){
+    bool check=true;
     int userop;
-    while(true){
+    do{
         printmenu();
         userop = input();
-        processinput(userop);
-    }
+        check=processinput(userop);
+    }while(check);
     return 0;
 }
 void printmenu()
@@ -36,10 +37,9 @@ int input()
     std::cout<<"Input Submitted"<<std::endl;
     return userop;
 }
-void processinput(int n)
+bool processinput(int n)
 {  
-    int userop =n;
-    switch (userop){
+    switch (n){
         case 1:
         std::cout<<"You Pressed: "<<userop<<std::endl;
         printhelp();
@@ -63,13 +63,16 @@ void processinput(int n)
         case 6:
         std::cout<<"You Pressed: "<<userop<<std::endl;
         gonext();
-        
         break;
+        case 0:
+        std::cout<<"You Pressed: "<<userop<<std::endl;
+        return false;
         default:
         std::cout<<"You Pressed: "<<userop<<std::endl;
         std::cout<<"Invalid Input"<<std::endl;
         break;
     }
+    return true;
 }
 void printhelp()
 {
