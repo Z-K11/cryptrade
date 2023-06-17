@@ -20,7 +20,6 @@ int main(){
 void printmenu()
 {
     std::cout<<"Press :"<<std::endl;
-    std::cout<<"0: To exit"<<std::endl;
     std::cout<<"1: Print help."<<std::endl
     <<"2: Print exchange stats."<<std::endl
     <<"3: Place an ask."<<std::endl
@@ -31,7 +30,7 @@ void printmenu()
 int input()
 {
     int userop;
-    std::cout<<"Please specify input between 0-6"<<std::endl;
+    std::cout<<"Please specify input between 1-6"<<std::endl;
     std::cin>>userop;
     std::cout<<"Input Submitted"<<std::endl;
     return userop;
