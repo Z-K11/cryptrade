@@ -25,7 +25,8 @@ void printmenu()
     <<"3: Place an ask."<<std::endl
     <<"4: Place a bid."<<std::endl
     <<"5: Print Wallet."<<std::endl
-    <<"6: continue."<<std::endl;
+    <<"6: continue."<<std::endl
+    <<"0: exit"<<std:endl;
 }
 int input()
 {
