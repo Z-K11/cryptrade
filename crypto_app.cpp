@@ -1,7 +1,7 @@
 #include<iostream>
 void printmenu();
 int input();
-void processinput(int n);
+bool processinput(int n);
 void printhelp();
 void stats();
 void ask();
