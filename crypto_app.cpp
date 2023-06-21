@@ -1,7 +1,7 @@
 #include<iostream>
 void printmenu();
 int input();
-bool processinput(int n);
+bool processinput(int &userop);
 void printhelp();
 void stats();
 void ask();
@@ -37,10 +37,10 @@ int input()
     std::cout<<"Input Submitted"<<std::endl;
     return userop;
 }
-bool processinput(int n)
+bool processinput(int &userop)
 {  
-    int userop = n;
-    switch (n){
+    
+    switch (userop){
         case 1:
         std::cout<<"You Pressed: "<<userop<<std::endl;
         printhelp();
