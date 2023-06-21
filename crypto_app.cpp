@@ -1,13 +1,4 @@
-/* Challenge
-Write some test code that creates multiple OrderBookEntry objects with different
-values and stores them into a vector. Now write some useful functions. The
-names should tell you what you need to calculate:
-double computeAveragePrice(std::vector<OrderBookEntry>& entries)
-double computeLowPrice(std::vector<OrderBookEntry>& entries)
-double computeHighPrice(std::vector<OrderBookEntry>& entries)
-double computePriceSpread(std::vector<OrderBookEntry>& entries)
-These functions can be placed anywhere in main.cpp before the main function.
-They are not part of the OrderBookEntry class */
+#include"crypt_app.h"
 #include<iostream>
 #include<string>
 #include<vector>
@@ -24,23 +15,6 @@ class orderbookentry;
 double compute_avg(std::vector<orderbookentry>& orders);
 double compute_low(std::vector<orderbookentry>& orders);
 double compute_hig(std::vector<orderbookentry>& orders);
-enum class ordertype
-{
-    bid,ask
-};
-class orderbookentry
-{
-    public:
-    orderbookentry(double price,double amount,std::string timestamp, std::string product,ordertype type);
-    double price;
-    double amount;
-    std::string product;
-    std::string timestamp;
-    ordertype type;
-
-
-};
-orderbookentry:: orderbookentry(double price,double amount,std::string timestamp, std::string product,ordertype type): price{price},amount{amount},product{product},timestamp{timestamp},type{type}{};
 int main(){
     orderbookentry order_1(123.01,0.24,"2020/03/17 17:01:24.884492","ETH/BTC",ordertype::bid);
     orderbookentry order_2(12.01,0.234,"2020/03/17 17:01:24.884492","ETH/BTC",ordertype::ask);
