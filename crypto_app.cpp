@@ -66,7 +66,7 @@ bool processinput(int &userop)
         gonext();
         break;
         case 0:
-        std::cout<<"You Pressed: "<<userop<<std::endl;
+        std::cout<<"Exiting Program"<<std::endl;
         return false;
         default:
         std::cout<<"You Pressed: "<<userop<<std::endl;
