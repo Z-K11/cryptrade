@@ -20,6 +20,10 @@ void ask();
 void bid();
 void wallet();
 void gonext();
+class orderbookentry;
+double compute_avg(std::vector<orderbookentry>& orders);
+double compute_low(std::vector<orderbookentry>& orders);
+double compute_hig(std::vector<orderbookentry>& orders);
 enum class ordertype
 {
     bid,ask
@@ -27,7 +31,7 @@ enum class ordertype
 class orderbookentry
 {
     public:
-    orderbookentry(double price,double amount,std::string timestamp, std::string product,ordertype type): price{price},amount{amount},product{product},timestamp{timestamp},type{type}{};
+    orderbookentry(double price,double amount,std::string timestamp, std::string product,ordertype type);
     double price;
     double amount;
     std::string product;
@@ -36,16 +40,23 @@ class orderbookentry
 
 
 };
+orderbookentry:: orderbookentry(double price,double amount,std::string timestamp, std::string product,ordertype type): price{price},amount{amount},product{product},timestamp{timestamp},type{type}{};
 int main(){
-    orderbookentry order_1(123123120.01,0.24,"2020/03/17 17:01:24.884492","ETH/BTC",ordertype::bid);
-    orderbookentry order_2(100000000.01,0.234,"2020/03/17 17:01:24.884492","ETH/BTC",ordertype::ask);
-    std::vector<orderbookentry> entries;
-    entries.push_back(order_1);
-    entries.push_back(order_2);
+    orderbookentry order_1(123.01,0.24,"2020/03/17 17:01:24.884492","ETH/BTC",ordertype::bid);
+    orderbookentry order_2(12.01,0.234,"2020/03/17 17:01:24.884492","ETH/BTC",ordertype::ask);
+    std::vector<orderbookentry> orders;
+    orders.push_back(order_1);
+    orders.push_back(order_2);
+    double highest = compute_hig(orders);
+    double avg=compute_avg(orders);
+    double lowest = compute_low(orders);
+    std::cout<<"Lowest :"<<lowest<<std::endl
+    <<"avg :"<<avg<<std::endl
+    <<"Highest :"<<highest<<std::endl;
     bool check=true;
     int userop;
     do{
-        for (orderbookentry ord : entries)
+        for (orderbookentry& ord : orders)
         {
             std::cout<<ord.price<<std::endl;
         }
@@ -138,4 +149,37 @@ void wallet()
 void gonext()
 {
     std::cout<<"Thank you for using our services"<<std::endl;
+}
+
+double compute_avg(std::vector<orderbookentry>& orders)
+{   double tot=0;
+    double avg;
+    for (orderbookentry& ord : orders)
+    {
+        tot+=ord.price;
+    }
+    avg =tot/orders.size();
+    return avg;
+}
+double compute_low(std::vector<orderbookentry>& orders)
+{   double lowest = orders[0].price;
+    for (orderbookentry& ord : orders)
+    {   if(lowest>ord.price)
+        {
+            lowest=ord.price;
+        }
+
+    }
+    return lowest;
+}
+double compute_hig(std::vector<orderbookentry>& orders)
+{   double highest = orders[0].price;
+    for (orderbookentry& ord : orders)
+    {   if(highest<ord.price)
+        {
+            highest=ord.price;
+        }
+
+    }
+    return highest;
 }
