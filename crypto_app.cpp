@@ -27,7 +27,7 @@ void printmenu()
     <<"4: Place a bid."<<std::endl
     <<"5: Print Wallet."<<std::endl
     <<"6: continue."<<std::endl
-    <<"0: exit"<<std:endl;
+    <<"0: exit"<<std::endl;
 }
 int input()
 {
@@ -39,6 +39,7 @@ int input()
 }
 bool processinput(int n)
 {  
+    int userop = n;
     switch (n){
         case 1:
         std::cout<<"You Pressed: "<<userop<<std::endl;
