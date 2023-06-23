@@ -63,6 +63,9 @@ bool processinput(int &userop)
 {  
     
     switch (userop){
+        case 0:
+        std::cout<<"Exiting Program"<<std::endl;
+        return false;
         case 1:
         std::cout<<"You Pressed: "<<userop<<std::endl;
         printhelp();
@@ -87,15 +90,12 @@ bool processinput(int &userop)
         std::cout<<"You Pressed: "<<userop<<std::endl;
         gonext();
         break;
-        case 0:
-        std::cout<<"Exiting Program"<<std::endl;
-        return false;
         default:
-        std::cout<<"You Pressed: "<<userop<<std::endl;
         std::cout<<"Invalid Input"<<std::endl;
         break;
     }
     return true;
+    
 }
 void printhelp()
 {
